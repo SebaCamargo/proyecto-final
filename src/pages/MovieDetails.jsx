@@ -18,7 +18,7 @@ function MovieDetail() {
       .get(`https://api.themoviedb.org/3/movie/${params.idMovie}?api_key=${apikey}&language=es-ES`)
       .then((response) => {
         setMovie(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       });
 
       // Petición para obtener los videos de la película
