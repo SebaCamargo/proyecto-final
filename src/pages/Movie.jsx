@@ -1,0 +1,74 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router";
+import axios from "axios";
+import "./Pages.css";
+import search from "../img/search.png";
+import miImagen from "../img/mateasado.png"; // Asegúrate de que la ruta sea correcta
+
+function Movies({ films }) {
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const apikey = "1f6c05af9a052262cc5f79b5bbfe674b";
+
+  useEffect(() => {
+    if (searchInput === "") {
+      setSearchResults([]);
+      return;
+    }
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${searchInput}`
+      )
+      .then((response) => {
+        setSearchResults(response.data.results);
+      });
+  }, [searchInput]);
+
+  // Determinar si mostrar películas populares o resultados de búsqueda
+  const moviesToDisplay = searchInput ? searchResults : films;
+
+  return (
+    <>
+    <div className="imagen-fondo-container">
+      <img src={miImagen} className="imagen-fondo" ></img>
+    </div>
+
+    <div className="movies-container">
+      <div className="search">
+        <img src={search} alt="imagen de una lupa" />
+        <input
+          type="text"
+          placeholder="Qué te gustaría ver?"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+      </div>
+
+      <div className="movies">
+        {moviesToDisplay.length === 0 ? (
+          <h2>No se encontraron películas con este nombre.</h2>
+        ) : (
+          moviesToDisplay.map((film) => (
+            <Link to={`/moviedetail/${film.id}`} key={film.id}>
+              <div className="movie">
+                {film.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+                    alt={film.title}
+                  />
+                ) : (
+                  <h2>No hay imagen disponible</h2>
+                )}
+              </div>
+            </Link>
+          ))
+        )}
+      </div>  
+    </div>
+    </>
+  );
+}
+
+export default Movies;
