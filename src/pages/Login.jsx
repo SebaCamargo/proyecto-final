@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { login } from "../state/authSlice";
+import { toast } from 'react-toastify';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -24,10 +25,9 @@ export default function Login() {
           password: formData.password,
         }
       );
-      // Si la autenticación es exitosa, la API devuelve un token y un userId
+
       const { token, userId } = response.data;
 
-      // 2. Obtener datos del usuario usando el token
       const userResponse = await axios.get(
         `https://ha-videoclub-api-g1.vercel.app/users/${userId}`,
         {
@@ -39,11 +39,10 @@ export default function Login() {
 
       const user = userResponse.data;
 
-      // Despachamos acción de login
       dispatch(login({ token, user }));
 
-
-      // Redirigimos al home
+      toast.success("¡Sesión iniciada. ¡Disfruta tu experiencia!");
+      
       navigate("/");
     } catch (error) {
       console.error(error);

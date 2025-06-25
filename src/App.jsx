@@ -4,6 +4,7 @@ import { Routes, Route, Link} from "react-router";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { ToastContainer } from 'react-toastify';
 import Movies from "./pages/Movie";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -12,7 +13,7 @@ import UserMenu from "./pages/UserMenu";
 import Profile from "./pages/Profile";
 import MovieDetails from "./pages/MovieDetails";
 import NotFoud from "./pages/NotFound";
-import Cart from "./pages/Cart"; //
+import Cart from "./pages/Cart"; 
 import cart from "./img/cart.png";
 import github from "./img/github.png"
 import linkedin from "./img/linkedin.png"
@@ -44,7 +45,8 @@ function App() {
 
   return (
     <>
-      <header>
+      <header> 
+      <ToastContainer />
         <div className= "hero">
           <ul>
             <li>

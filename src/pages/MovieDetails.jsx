@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../state/cartSlice";
+import { toast } from 'react-toastify';
 import buy from "../img/checkout.png"
 import axios from "axios";
 
@@ -18,10 +19,8 @@ function MovieDetail() {
       .get(`https://api.themoviedb.org/3/movie/${params.idMovie}?api_key=${apikey}&language=es-ES`)
       .then((response) => {
         setMovie(response.data);
-        //console.log(response.data);
       });
 
-      // Petición para obtener los videos de la película
       axios
       .get(`https://api.themoviedb.org/3/movie/${params.idMovie}/videos?api_key=${apikey}`)
       .then((response) => {
@@ -66,6 +65,7 @@ function MovieDetail() {
               </ul>
               <div className="buy"
                 onClick={() => {
+                  toast.success("¡Película agregada al carrito!");
                   dispatch(addToCart({
                     id: movie.id,
                     title: movie.title,
@@ -85,10 +85,7 @@ function MovieDetail() {
             <iframe src={`https://www.youtube.com/embed/${trailer}`} title="Tráiler" className="video"></iframe>
           </div>
         )}
-
       </div>
-
-
     </>
   );
 }

@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import 'react-toastify/dist/ReactToastify.css';
 import store, { persistor } from "./state/Store";
 import App from "./App.jsx";
 

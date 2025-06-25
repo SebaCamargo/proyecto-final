@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { toast } from 'react-toastify';
 import axios from "axios";
 import { login } from "../state/authSlice";
 import "./Pages.css";
@@ -75,8 +76,10 @@ export default function Profile() {
       setNewPassword(""); 
       setShowPasswordField(false);
       setIsEditing(false);
+      toast.success("Cambios realizados correctamente!");
     } catch (error) {
       console.error("Error al actualizar el perfil:", error);
+      toast.error("Hubo un error al guardar los cambios");
     }
   };
 
@@ -213,7 +216,8 @@ export default function Profile() {
           <>
             {cart.map((item) => (
               <div key={item.id} className="order-item">
-                <strong>{item.title}</strong> — {item.quantity} unidad(es) — ${item.price} c/u
+                <p className="orderitem-title">{item.title}</p>
+                <p className="orderitem-quantity"> {item.quantity} unidad(es) — $ {item.price} c/u</p>   
               </div>
             ))}
             <div className="total-orders">

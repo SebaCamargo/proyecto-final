@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useSelector } from "react-redux";
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export default function Register() {
@@ -19,9 +20,6 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Estamos listos para enviar la información del nuevo usuario a la API para que se cree:
-    // ASYNC / AWAIT
-
     try {
       await axios.post(
         'https://ha-videoclub-api-g1.vercel.app/users',
@@ -36,10 +34,11 @@ export default function Register() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`, // Si el usuario ya está autenticado, enviamos el token
+            Authorization: `Bearer ${token}`,
           },
         }
       );
+      toast.success("¡Gracias por registrarte!");
       navigate('/login');
     } catch (error) {
       console.log(error);

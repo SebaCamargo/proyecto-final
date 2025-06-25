@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../state/cartSlice";
+import { toast } from 'react-toastify';
 import axios from "axios";
 import "./Pages.css";
 import search from "../img/search.png";
-import miImagen from "../img/mateasado.png"; // Asegúrate de que la ruta sea correcta
+import miImagen from "../img/mateasado.png";
+import cartbuy from "../img/checkout.png"
 
 function Movies({ films }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const dispatch = useDispatch();
 
   const apikey = "1f6c05af9a052262cc5f79b5bbfe674b";
 
@@ -54,10 +59,27 @@ function Movies({ films }) {
             <Link to={`/moviedetail/${film.id}`} key={film.id}>
               <div className="movie">
                 {film.poster_path ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
-                    alt={film.title}
-                  />
+                  <>
+                    <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt={film.title}/>
+                    <div className="container-cartbuy"
+                      onClick={(event) => {
+                        event.preventDefault(); 
+                        event.stopPropagation();
+                        toast.success("¡Película agregada al carrito!");  
+
+                        dispatch(
+                          addToCart({
+                            id: film.id,
+                            title: film.title,
+                            price: Number((film.vote_average * 10).toFixed(0)),
+                          })
+                        );
+                      }}
+                    >
+                      <img className="cartbuy" src={cartbuy} alt="supermarcket car" />
+                    </div>
+
+                  </>
                 ) : (
                   <h2>No hay imagen disponible</h2>
                 )}

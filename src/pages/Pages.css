@@ -6,7 +6,6 @@
     z-index: 1;
 }
 
-
 .imagen-fondo {
     width: 100%;
     height: 800px;
@@ -79,6 +78,7 @@
     padding: 15px;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .movies .movie img {
@@ -86,6 +86,7 @@
     height: 450px;
     max-width: 300px;
     border-radius: 15px;
+
 }
 
 .movies .movie img:hover {
@@ -93,7 +94,38 @@
     transition: transform 0.8s;
 }
 
+.movies .movie .container-cartbuy{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #042f4dc4;
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.movies .movie  .cartbuy{
+    filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(678%) hue-rotate(75deg) brightness(90%) contrast(85%);
+    width: 40px;
+    height: 40px;
+}
+
+.movies .movie .container-cartbuy img{
+    cursor: pointer;
+}
+
+.movies .movie .container-cartbuy img:active {
+    transform: scale(0.70);
+    box-shadow: none;
+}
+
+/*--------------------------------------*/
 /* -----------Movie details ------------*/
+/*------------------------====----------*/
 
 .container-movie-detail{
     padding-top: 80px;
@@ -212,7 +244,9 @@
     border-radius: 20px;
 }
 
+/*----------------------------------*/
 /* ----------- User menu ------------*/
+/*----------------------------------*/
 
 .user-menu-wrapper {
     position: relative;
@@ -287,20 +321,21 @@
 .dropdown-menu button:hover {
     color: #28a745;
 }
-
+/*----------------------------------*/
 /* ----------- Profile ------------*/
+/*----------------------------------*/
 
 .profile-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding-top: 50px;
     background-color:#b6e5ff;
     color: #064a74;
-    height: 100vh; 
     max-width: 1200px; 
     margin: auto;
+    min-height: 100vh;
 }
 
 .profile-container h1 {
@@ -363,6 +398,7 @@
 .profile-container .container-btn{
     display: flex;
     width: 80%;
+    margin-bottom: 30px;
 }
 
 .profile-container .container-btn .btn-save {
@@ -443,7 +479,49 @@
     font-size: 14px;
 }
 
+.profile-container .orders-section{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #064a74;
+    width: 80%;
+    gap: 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.profile-container .orders-section h2{
+    margin: 10px 0 20px 20px ;
+    color:#064a74;
+}
+
+.profile-container .orders-section .order-item{
+    color: #0083d4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.profile-container .orders-section .order-item .orderitem-title{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.profile-container .orders-section .order-item .orderitem-quantity{
+    margin: 10px 20px 10px 10px;
+    font-weight: 500;
+}
+
+.profile-container .orders-section .total-orders{
+    color: #042e4d;
+    margin-top: 20px;
+    padding: 10px;
+
+}
+/*-------------------------------*/
 /* ----------- Login ------------*/
+/*-------------------------------*/
 
 .container-login {
     height: 100vh;
@@ -532,8 +610,9 @@
     text-decoration: none;
     margin-left: 10px;
 }
-
+/*----------------------------------*/
 /* ----------- Register ------------*/
+/*----------------------------------*/
 
 .container-register {
     height: 100vh;
@@ -627,8 +706,9 @@
     text-decoration: none;
     margin-left: 10px;
 }
-
+/*------------------------------------*/
 /*------------- Not Found-------------*/
+/*------------------------------------*/
 
 .container-notFound{
     height: 95vh;
@@ -656,11 +736,97 @@
     font-size: 22px;
 }
 
+/*---------------------*/
 /*--------Cart---------*/
+/*---------------------*/
 .cart{
-    height: 95vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 70px;
+
+}
+
+.cart .cart-title{
+    display: flex;
+    margin: 20px;
+    background-color: #def1ff;
+    border-radius: 10px;
+    padding: 5px 25px;
+    align-items: center;
+}
+
+.cart .cart-title img{
+    filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(678%) hue-rotate(75deg) brightness(90%) contrast(85%);
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.cart .cart-title h2{
+    color:#05971bf3;
+    font-size: 40px;
+}
+
+.cart .cart-items{
+    border: 2px solid #05971bf3;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.cart .cart-items .cart-item{
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "film film quantity butons"
+}
+
+.cart .cart-items .cart-item .film {
+    grid-area: film;
+    color: #00588d;
+    font-size: 20px;
+}
+.cart .cart-items .cart-item .quantity {
+    grid-area: quantity;
+    color: #00588d;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px;
+}
+.cart .cart-items .cart-item .butons {
+    grid-area: butons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cart .cart-items .cart-item .butons img{
+    width: 30px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart .cart-items .cart-item .butons img:active{
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.cart .cart-items .cart-item .butons .delete-icon{
+    filter: brightness(0) saturate(2000%) invert(25%) sepia(200%) saturate(2000%) hue-rotate(-10deg);
+    width: 32px;
+}
+
+.cart .cart-items .total{
+    color:#042e4d;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
 }

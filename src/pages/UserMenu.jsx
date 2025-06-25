@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
 import { logout } from "../state/authSlice";
 import user from "../img/user.png"; // imagen del usuario
 import "./Pages.css";
@@ -14,7 +15,8 @@ function UserMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    dispatch(logout()); // elimina datos del store y localStorage
+    dispatch(logout()); 
+    toast.success("Gracias por visitarnos. ¡Has cerrado sesión!");
     navigate("/login");
   };
 
@@ -30,7 +32,6 @@ function UserMenu() {
     }
   };
 
-  // 🟢 Cierra el menú automáticamente al iniciar sesión
   useEffect(() => {
     setMenuOpen(false);
   }, [token]);
