@@ -70,7 +70,7 @@ function App() {
               </li>
 
               <li>
-                <Link to="/about">Sobre este proyecto</Link>
+                <Link to="/about">About</Link>
               </li>
 
               <li>

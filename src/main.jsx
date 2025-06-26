@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import 'react-toastify/dist/ReactToastify.css';
-import store, { persistor } from "./state/Store";
+import store, { persistor } from "./state/store.js";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(

@@ -6,24 +6,22 @@ import authReducer from "./authSlice";
 import cartReducer from "./cartSlice";
 import ordersReducer from './ordersSlice';
 
-// Combinamos los reducers de la aplicación
+
 const rootReducer = combineReducers({
-    auth: authReducer, // El estado será accesible como state.auth
+    auth: authReducer, 
     cart: cartReducer,
     orders: ordersReducer,
 });
 
-// Configuración de redux-persist
+
 const persistConfig = {
-    key: "root",          // Clave en localStorage: 'persist:root'
-    storage,               // Usamos localStorage para persistencia
-    whitelist: ["auth", "cart", "orders"], // Solo persistimos el slice 'auth'
+    key: "root",          
+    storage,               
+    whitelist: ["auth", "cart", "orders"], 
 };
 
-// Envolvemos rootReducer con persistReducer para habilitar persistencia
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Configuramos el store
 const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
@@ -34,6 +32,5 @@ const store = configureStore({
     }),
 });
 
-// Creamos el persistor para controlar la persistencia del store
 export const persistor = persistStore(store);
 export default store;

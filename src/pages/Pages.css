@@ -971,3 +971,17 @@
 .cart .btn-checkout:hover {
     background-color: #023148;
 }
+
+/*---------------------*/
+/*--------About---------*/
+/*---------------------*/
+.about{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+    width: 70%;
+    margin: auto; 
+}
