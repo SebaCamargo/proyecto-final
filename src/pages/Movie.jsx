@@ -64,7 +64,7 @@ function Movies({ films }) {
                       onClick={(event) => {
                         event.preventDefault(); 
                         event.stopPropagation();
-                        toast.success("¡Película agregada al carrito!");  
+                        toast.success(`"${film.title}" agregada al carrito!`); 
 
                         dispatch(
                           addToCart({

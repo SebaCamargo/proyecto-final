@@ -416,11 +416,6 @@
     background-color: #047a15;
 }
 
-.profile-container .orders-section {
-    margin-top: 20px;
-    border: 1px solid #064a74;
-
-}
 
 .profile-container .profile-info .input-edit {
     background-color: #2cbdff;
@@ -482,10 +477,7 @@
 .profile-container .orders-section{
     width: 80%;
     padding: 10px;
-    border: 1px solid #064a74;
     width: 80%;
-    gap: 30px;
-    border-radius: 10px;
     font-size: 18px;
     margin-bottom: 20px;
 }
@@ -498,26 +490,41 @@
 .profile-container .orders-section .order-item{
     color: #0083d4;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     margin-left: 20px;
+    border: 2px solid #064a74;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 0 20px;
 }
 
-.profile-container .orders-section .order-item .orderitem-title{
+
+.profile-container .orders-section .order-item .order-title-data{
     font-size: 20px;
     margin: 10px;
+    font-weight: 500;
 }
 
-.profile-container .orders-section .order-item .orderitem-quantity{
-    margin: 10px 20px 10px 10px;
-    font-weight: 500;
+.profile-container .orders-section .order-item h3{
+    margin: 10px 20px ;
+    font-weight: 700;
+    color: #042e4d;
 }
 
 .profile-container .orders-section .total-orders{
     color: #042e4d;
     margin-top: 20px;
     padding: 10px;
+}
 
+/* estoy aca */
+
+.profile-container .orders-section .order-item .order-list{
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(1, auto);
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: "film quantity mony";
 }
 /*-------------------------------*/
 /* ----------- Login ------------*/
@@ -845,4 +852,122 @@
     margin: 10px;
     padding: 10px;
     font-size: 20px;
+}
+
+.cart .btn-checkout {
+    padding: 10px 30px;
+    background-color: #064a74;
+    color: #b6e5ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+
+.cart .btn-checkout:hover {
+    background-color: #023148;
+}
+
+/*---------------------*/
+/*--------Checkout---------*/
+/*---------------------*/
+.checkout{
+    min-height: 100vh;
+    padding-top: 70px;
+    width: 100%;
+    text-align: center;
+}
+
+.checkout h1 {
+    color: #023148;
+    margin:  10px auto;
+    text-align: center;
+    width: 100%;
+    font-weight: 800;
+}
+
+.checkout .container-order{
+    display: flex;
+    justify-content: center;
+    color: #023148;
+}
+
+.checkout .container-order .user-info{
+    margin: 0 40px 30px 40px;
+    text-align: start;
+}
+
+.checkout .container-order .user-info h2{
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.checkout .container-order .user-info p{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.checkout .container-order .user-info .info-details{
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #023148;
+    padding: 5px;
+    background-color: #75d3ff;
+    border-radius: 5px;
+}
+
+.checkout .container-order .order-info{
+    margin: 0 40px 30px 40px;
+}
+
+.checkout .container-order .order-info h2{
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.checkout .container-order .order-info .order-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid #02314883;
+    margin-bottom: 15px;
+}
+  
+.checkout .container-order .order-info .order-item img {
+    border-radius: 4px;
+    width: 60px;
+}
+  
+.checkout .container-order .order-info .order-item .order-details{
+    text-align: center;
+    width: 100%;
+}
+
+.checkout .btn-finish{
+    padding: 10px 30px;
+    background-color: #064a74;
+    color: #b6e5ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.cart .btn-checkout {
+    padding: 10px 30px;
+    background-color: #064a74;
+    color: #b6e5ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+
+.cart .btn-checkout:hover {
+    background-color: #023148;
 }

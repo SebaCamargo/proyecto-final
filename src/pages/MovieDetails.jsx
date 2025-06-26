@@ -65,7 +65,7 @@ function MovieDetail() {
               </ul>
               <div className="buy"
                 onClick={() => {
-                  toast.success("¡Película agregada al carrito!");
+                  toast.success(`"${movie.title}" agregada al carrito!`);
                   dispatch(addToCart({
                     id: movie.id,
                     title: movie.title,

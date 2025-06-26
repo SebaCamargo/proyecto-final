@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, increaseQuantity, decreaseQuantity } from "../state/cartSlice";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import cartmarket from "../img/cart.png";
 import more from "../img/plus.png"
 import min from "../img/minus.png"
@@ -8,6 +10,7 @@ import delet from "../img/delete.png"
 export default function Cart() {
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -26,7 +29,6 @@ export default function Cart() {
             {cart.map(item => (
               <div key={item.id} className="cart-item">
                 <div className="item-info">
-                {console.log("IMG:", item.img)}
                   <img src={item.img} alt={item.title} width="100" className="item-thumbnail" />
                   <h3 className="film">{item.title}</h3>
                 </div>
@@ -42,7 +44,16 @@ export default function Cart() {
             <div className="total">Total: ${total.toFixed(2)}</div>
           </>
         )}
+
       </div>
-    </div>
+        {cart.length > 0 && (
+          <button
+            className="btn-checkout"
+            onClick={() => {
+              toast.success("Ya es casi tuyo...");
+              navigate("/checkout");
+          }}> Finalizar compra </button>
+        )}
+      </div>
   );
 }

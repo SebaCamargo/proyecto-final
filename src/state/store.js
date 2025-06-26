@@ -4,18 +4,20 @@ import {persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, R
 import storage from "redux-persist/lib/storage";
 import authReducer from "./authSlice";
 import cartReducer from "./cartSlice";
+import ordersReducer from './ordersSlice';
 
 // Combinamos los reducers de la aplicación
 const rootReducer = combineReducers({
     auth: authReducer, // El estado será accesible como state.auth
     cart: cartReducer,
+    orders: ordersReducer,
 });
 
 // Configuración de redux-persist
 const persistConfig = {
     key: "root",          // Clave en localStorage: 'persist:root'
     storage,               // Usamos localStorage para persistencia
-    whitelist: ["auth", "cart"], // Solo persistimos el slice 'auth'
+    whitelist: ["auth", "cart", "orders"], // Solo persistimos el slice 'auth'
 };
 
 // Envolvemos rootReducer con persistReducer para habilitar persistencia

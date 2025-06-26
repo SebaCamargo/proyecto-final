@@ -10,6 +10,7 @@ export default function Profile() {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.user);
   const cart = useSelector((state) => state.cart);
+  const orders = useSelector(state => state.orders);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -210,23 +211,25 @@ export default function Profile() {
 
       <div className="orders-section">
         <h2>Mis Órdenes</h2>
-        {cart.length === 0 ? (
-          <p>No tienes películas en el carrito por ahora.</p>
-        ) : (
-          <>
-            {cart.map((item) => (
-              <div key={item.id} className="order-item">
-                <p className="orderitem-title">{item.title}</p>
-                <p className="orderitem-quantity"> {item.quantity} unidad(es) — $ {item.price} c/u</p>   
+          {orders.length === 0 ? (
+            <p>No tienes órdenes registradas.</p>
+          ) : (
+            orders.map((order, index) => (
+              <div key={order.id} className="order-item">
+                <p className="order-title-data"><strong>Orden #{index + 1}</strong> - Fecha: {order.date}</p>
+                <h3>Items</h3>
+                  {order.items.map(item => (
+                    <ul className="order-list" key={item.id}>
+                      <li> {item.title} </li>
+                      <li> {item.quantity} unidad(es) </li>
+                      <li> $ {item.price} c/u </li>
+                    </ul>
+                  ))}
+                <p><strong>Total:</strong> ${order.total.toFixed(2)}</p>
               </div>
-            ))}
-            <div className="total-orders">
-              Total: ${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
-            </div>
-          </>
-        )}
-      </div>
-
+            ))
+          )}
+        </div>
     </div>
   );
 }

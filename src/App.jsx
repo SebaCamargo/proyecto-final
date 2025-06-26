@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import UserMenu from "./pages/UserMenu";
 import Profile from "./pages/Profile";
 import MovieDetails from "./pages/MovieDetails";
+import Checkout from "./pages/Checkout";
 import NotFoud from "./pages/NotFound";
 import Cart from "./pages/Cart"; 
 import cart from "./img/cart.png";
@@ -115,6 +116,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/cart" element={<Cart />} />
+
+          <Route path="/checkout" element={<Checkout />} />
 
           <Route path="*" element={<NotFoud />} />
         </Routes>
