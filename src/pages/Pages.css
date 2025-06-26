@@ -776,16 +776,32 @@
     font-size: 18px;
     padding: 25px;
     margin-bottom: 30px;
+    width: 70vw;
 }
 
 .cart .cart-items .cart-item{
     padding: 10px;
     display: grid;
     align-items: center;
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "film film quantity butons"
+    grid-template-rows: repeat(1, auto);
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: "film quantity butons";
 }
+
+.cart .cart-items .cart-item .item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.cart .cart-items .cart-item .item-thumbnail {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    margin: 0 20px;
+}
+  
 
 .cart .cart-items .cart-item .film {
     grid-area: film;

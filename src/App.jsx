@@ -24,6 +24,8 @@ function App() {
   const [films, setFilms] = useState([]);
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
+  const cartItems = useSelector((state) => state.cart);
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);    
 
   const apikey = "1f6c05af9a052262cc5f79b5bbfe674b";
 
@@ -46,7 +48,15 @@ function App() {
   return (
     <>
       <header> 
-      <ToastContainer />
+        <ToastContainer
+          toastClassName="mi-toast"
+          bodyClassName="mi-toast-body"
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          theme="light"
+        />
+
         <div className= "hero">
           <ul>
             <li>
@@ -57,22 +67,28 @@ function App() {
               <li>
                 <Link to="/">Home</Link>
               </li>
+
               <li>
                 <Link to="/about">Sobre este proyecto</Link>
               </li>
+
               <li>
                 <UserMenu />
               </li>
+
               <li>
-              <img src={cart} alt="cart" className="carrito"
-                 onClick={() => {
+                <div className="cart-icon-wrapper" onClick={() => {
                   if (token) {
                     navigate("/cart");
                   } else {
                     navigate("/login");
                   }
-                }}
-              />
+                }}>
+                  <img src={cart} alt="cart" className="carrito" />
+                    {totalQuantity > 0 && (
+                      <div className="cart-badge">{totalQuantity}</div>
+                    )}
+                </div>
               </li>
 
               <li>

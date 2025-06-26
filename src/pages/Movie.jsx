@@ -31,7 +31,6 @@ function Movies({ films }) {
       });
   }, [searchInput]);
 
-  // Determinar si mostrar películas populares o resultados de búsqueda
   const moviesToDisplay = searchInput ? searchResults : films;
 
   return (
@@ -72,6 +71,7 @@ function Movies({ films }) {
                             id: film.id,
                             title: film.title,
                             price: Number((film.vote_average * 10).toFixed(0)),
+                            img: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
                           })
                         );
                       }}

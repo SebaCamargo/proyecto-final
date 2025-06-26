@@ -25,7 +25,11 @@ export default function Cart() {
           <>
             {cart.map(item => (
               <div key={item.id} className="cart-item">
-                <h3 className="film">{item.title}</h3>
+                <div className="item-info">
+                {console.log("IMG:", item.img)}
+                  <img src={item.img} alt={item.title} width="100" className="item-thumbnail" />
+                  <h3 className="film">{item.title}</h3>
+                </div>
                 <p className="quantity">Cantidad: {item.quantity} - $ {item.price} c/u</p>
                 <div className="butons">
                   <img onClick={() => dispatch(increaseQuantity(item.id))} src={more} alt="plus icon " />

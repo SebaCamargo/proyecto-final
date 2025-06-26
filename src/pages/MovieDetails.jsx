@@ -70,6 +70,7 @@ function MovieDetail() {
                     id: movie.id,
                     title: movie.title,
                     price: Number((movie.vote_average * 10).toFixed(0)),
+                    img: `https://image.tmdb.org/t/p/w300${movie.poster_path}`,
                   }));
                 }}>
                   <img src={buy} alt="cart buy" />

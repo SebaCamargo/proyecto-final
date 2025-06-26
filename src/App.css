@@ -70,6 +70,25 @@ body {
   box-shadow: none;
 }
 
+.hero .nav-links .cart-icon-wrapper {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.hero .nav-links .cart-icon-wrapper .cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 10px;
+  text-align: center;
+}
 
 /*pie de pagina*/
 
@@ -112,4 +131,28 @@ body {
   width: 25px;
 }
 
+/* Estilo general del toast */
+.mi-toast {
+  background-color: #b6e5ff!important;  /* fondo azul oscuro */
+  color: #042e4d !important;             /* texto blanco */
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  padding: 10px 15px !important;
+}
 
+/* Estilo del cuerpo del toast */
+.mi-toast-body {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Cambiar color de la barra de progreso en toast success */
+.Toastify__progress-bar--success {
+  background: #042e4d !important;
+}
+
+/* Cambiar color del ícono (tick) en toast success */
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: #042e4d !important;
+}
