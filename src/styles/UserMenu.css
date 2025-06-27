@@ -1,0 +1,73 @@
+.user-menu-wrapper {
+    position: relative;
+    display: inline-block;
+}
+  
+.user-icon {
+    width: 32px;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+    margin: 0;
+}
+
+.user-icon:active{
+    transform: scale(0.90);
+    box-shadow: none;
+}
+  
+
+.login {
+    filter: brightness(0) saturate(100%) invert(47%) sepia(99%) saturate(371%) hue-rotate(75deg) brightness(93%) contrast(89%);
+}
+  
+
+.logout {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(95%) saturate(2000%) hue-rotate(0deg) brightness(95%) contrast(100%);
+}
+  
+.user-menu-arrow {
+    cursor: pointer;
+    font-size: 18px;
+    color: #28a745; 
+}
+
+.user-menu-arrow:active{
+    transform: scale(0.80);
+    box-shadow: none;
+}
+  
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    background-color: #b6e5ff;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.742);
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    min-width: 120px;
+}
+  
+.dropdown-menu a,
+.dropdown-menu button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 5px 0;
+    cursor: pointer;
+    color: #fd0000b9;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dropdown-menu a{
+    font-weight: 700;
+}
+  
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+    color: #28a745;
+}

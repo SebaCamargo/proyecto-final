@@ -5,6 +5,7 @@ import { addToCart } from "../state/cartSlice";
 import { toast } from 'react-toastify';
 import buy from "../img/checkout.png"
 import axios from "axios";
+import "../styles/MovieDetails.css"
 
 function MovieDetail() {
   const params = useParams();

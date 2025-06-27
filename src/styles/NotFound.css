@@ -1,0 +1,25 @@
+.container-notFound{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-notFound h1{
+    color: rgba(178, 1, 1, 0.871);
+    font-size: 120px;
+    margin: 20px;
+}
+
+.container-notFound p{
+    font-size: 32px;
+    color: #042e4d;
+}
+
+.container-notFound a{
+    color:#0083d4;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 22px;
+}

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { login } from "../state/authSlice";
 import { toast } from 'react-toastify';
+import "../styles/Login.css"
 
 export default function Login() {
   const dispatch = useDispatch();

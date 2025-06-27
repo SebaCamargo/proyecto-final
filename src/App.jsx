@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Routes, Route, Link} from "react-router";
+import { Routes, Route, Link } from "react-router";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { logout } from "./state/authSlice";
+import { useRef } from "react";
 import Movies from "./pages/Movie";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -14,19 +17,22 @@ import Profile from "./pages/Profile";
 import MovieDetails from "./pages/MovieDetails";
 import Checkout from "./pages/Checkout";
 import NotFoud from "./pages/NotFound";
-import Cart from "./pages/Cart"; 
+import Cart from "./pages/Cart";
 import cart from "./img/cart.png";
-import github from "./img/github.png"
-import linkedin from "./img/linkedin.png"
-import insta from "./img/insta.png"
+import github from "./img/github.png";
+import linkedin from "./img/linkedin.png";
+import insta from "./img/insta.png";
 import "./App.css";
 
 function App() {
   const [films, setFilms] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const cartItems = useSelector((state) => state.cart);
-  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);    
+  const menuToggleRef = useRef();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const apikey = "1f6c05af9a052262cc5f79b5bbfe674b";
 
@@ -46,9 +52,34 @@ function App() {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [location.pathname]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleLinkClick = () => {
+    if (menuToggleRef.current) {
+      menuToggleRef.current.checked = false;
+    }
+  };
+
+  const handleLogout = () => {
+    if (menuToggleRef.current) {
+      menuToggleRef.current.checked = false;
+    }
+
+    dispatch(logout());
+    toast.success("Gracias por visitarnos. ¡Has cerrado sesión!");
+    navigate("/login");
+  };
+
   return (
     <>
-      <header> 
+      <header>
         <ToastContainer
           toastClassName="mi-toast"
           bodyClassName="mi-toast-body"
@@ -57,48 +88,90 @@ function App() {
           hideProgressBar={false}
           theme="light"
         />
+        <nav className="navbar">
+          <div className="hero">
+            <ul>
+              <div className="logo">
+                <li>
+                  <Link to="/">
+                    <span>UruFlix</span>
+                  </Link>{" "}
+                </li>
+              </div>
 
-        <div className= "hero">
-          <ul>
-            <li>
-              <Link to="/"><span>UruFlix</span></Link>
-            </li>
+              {/* Menú hamburguesa solo para móvil */}
+              {isMobile && (
+                <>
+                  <input
+                    type="checkbox"
+                    id="menu-toggle"
+                    className="menu-toggle"
+                    ref={menuToggleRef}
+                  />
+                  <label htmlFor="menu-toggle" className="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </label>
+                </>
+              )}
 
-            <div className="nav-links">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
+              <div className="nav-links">
+                <li>
+                  <Link to="/" onClick={handleLinkClick}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={handleLinkClick}>
+                    About
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/about">About</Link>
-              </li>
+                <li className="user-menu-inline">
+  {isMobile ? (
+    token ? (
+      <>
+        <a href="/profile" onClick={handleLinkClick}>Perfil</a>
+        <button onClick={() => { handleLogout(); handleLinkClick(); }}>Cerrar sesión</button>
 
-              <li>
-                <UserMenu />
-              </li>
-
-              <li>
-                <div className="cart-icon-wrapper" onClick={() => {
-                  if (token) {
-                    navigate("/cart");
-                  } else {
-                    navigate("/login");
-                  }
-                }}>
-                  <img src={cart} alt="cart" className="carrito" />
-                    {totalQuantity > 0 && (
+      </>
+    ) : (
+      <a href="/login" onClick={handleLinkClick}>Login</a>
+    )
+  ) : (
+    <UserMenu />
+  )}
+</li>
+                <li>
+                  <div
+                    className="cart-icon-wrapper"
+                    onClick={() => {
+                      handleLinkClick();
+                      if (token) {
+                        navigate("/cart");
+                      } else {
+                        navigate("/login");
+                      }
+                    }}
+                  >
+                    <img src={cart} alt="cart" className="carrito" />
+                    {token && totalQuantity > 0 && (
                       <div className="cart-badge">{totalQuantity}</div>
                     )}
-                </div>
-              </li>
+                  </div>
+                </li>
 
-              <li>
-                <Link to='/register'>Register</Link>
-              </li>
-            </div>
-          </ul>
-        </div>
-
+                <li>
+                  {" "}
+                  <Link to="/register" onClick={handleLinkClick}>
+                    Register
+                  </Link>{" "}
+                </li>
+              </div>
+            </ul>
+          </div>
+        </nav>
       </header>
 
       <main>
@@ -106,12 +179,12 @@ function App() {
           <Route path="/" element={<Movies films={films} />} />
 
           <Route path="/moviedetail/:idMovie" element={<MovieDetails />} />
-          
+
           <Route path="/about" element={<About />} />
 
-          <Route path='/login' element={<Login />} />
+          <Route path="/login" element={<Login />} />
 
-          <Route path='/register' element={<Register />} />
+          <Route path="/register" element={<Register />} />
 
           <Route path="/profile" element={<Profile />} />
 
@@ -127,10 +200,21 @@ function App() {
         <div className="container-footer">
           <h1>UruFlix</h1>
           <div className="container-personal-information">
-            <h2>Creado por : <span>Sebastian Camargo</span></h2>
-            <a href="https://github.com/SebaCamargo" target="_blank"> <img src={github} alt="icon github" /> </a>
-            <a href="https://www.linkedin.com/in/seba-camargo/" target="_blank"> <img src={linkedin} alt="icon linkedin" /> </a>
-            <a href="https://www.instagram.com/sebacamargo360/" target="_blank"> <img src={insta} alt="icon instagram" /> </a>
+            <h2>
+              Creado por : <span>Sebastian Camargo</span>
+            </h2>
+            <a href="https://github.com/SebaCamargo" target="_blank">
+              {" "}
+              <img src={github} alt="icon github" />{" "}
+            </a>
+            <a href="https://www.linkedin.com/in/seba-camargo/" target="_blank">
+              {" "}
+              <img src={linkedin} alt="icon linkedin" />{" "}
+            </a>
+            <a href="https://www.instagram.com/sebacamargo360/" target="_blank">
+              {" "}
+              <img src={insta} alt="icon instagram" />{" "}
+            </a>
           </div>
         </div>
       </footer>

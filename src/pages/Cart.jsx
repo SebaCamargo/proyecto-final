@@ -6,6 +6,7 @@ import cartmarket from "../img/cart.png";
 import more from "../img/plus.png"
 import min from "../img/minus.png"
 import delet from "../img/delete.png"
+import "../styles/Cart.css";
 
 export default function Cart() {
   const cart = useSelector(state => state.cart);

@@ -1,0 +1,92 @@
+.container-register {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-register .form-register {
+    background-color: #0083d4;
+    min-height: 50%;
+    min-width: 50%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-register h1{
+    font-size: 32px;
+    color: #b6e5ff;
+}
+
+.container-register .form-register form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+}
+
+.container-register .form-register form .register-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.container-register .form-register form .register-group label{
+    color: #b6e5ff;
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.container-register .form-register form .register-group input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #064a74;
+    font-size: 18px;
+    width: 70%;
+}
+
+.container-register .form-register form .register-group input:focus{
+    outline: none;
+    border-color: #064a74;
+}
+
+.container-register .form-register .alignment {
+    display: flex;
+}
+
+.container-register .form-register .alignment .input-register input{
+    width: 93%;
+}
+
+.container-register .form-register form .btn-create{
+    width: 50%;
+    margin: auto;
+    padding: 10px 15px;
+    background-color: #059c1e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.container-register .form-register form .btn-create:hover {
+    background-color: #047a15;
+}
+
+.container-register .form-register .switch-register p{
+    color: #b6e5ff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.container-register .form-register .switch-register a{
+    color: #042e4d;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 10px;
+}

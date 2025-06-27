@@ -1,0 +1,87 @@
+.container-login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-login .form-section {
+    background-color: #0083d4;
+    min-height: 50%;
+    min-width: 50%;
+    border-radius: 15px;
+}
+
+.container-login .form-section h1 {
+    text-align: center;
+    color: #b6e5ff;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.container-login .form-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-login .form-section .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-login .form-section .form-group label {
+    color: #064a74;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.container-login .form-section .form-group input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #064a74;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.container-login .form-section .form-group input:focus {
+    outline: none;
+    border-color: #064a74;
+}
+
+.container-login .form-section button {
+    padding: 10px 20px;
+    background-color: #064a74;
+    color: #b6e5ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.container-login .form-section button:hover {
+    background-color: #023148;
+}
+
+.container-login .form-section .switch-form {
+    display: flex;
+    justify-content: center;
+}
+
+.container-login .form-section .switch-form p {
+    color: #b6e5ff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.container-login .form-section .switch-form a {
+    color: #042e4d;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 10px;
+}

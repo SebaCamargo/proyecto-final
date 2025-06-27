@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../state/cartSlice";
 import { toast } from 'react-toastify';
 import axios from "axios";
-import "./Pages.css";
+import "../styles/Movie.css";
 import search from "../img/search.png";
 import miImagen from "../img/mateasado.png";
 import cartbuy from "../img/checkout.png"

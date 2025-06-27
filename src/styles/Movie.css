@@ -1,0 +1,124 @@
+.imagen-fondo-container {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.imagen-fondo {
+    width: 100%;
+    height: 800px;
+    object-fit: cover; 
+    opacity: 0.8; 
+    display: block;
+}
+
+.imagen-fondo-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10%; 
+    background: linear-gradient(to bottom, transparent,#b6e5ff);
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+.movies-container {
+    position: relative;
+    z-index: 2;
+    margin-top: -400px; 
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 40px 0;
+}
+
+.search img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    filter: brightness(0) saturate(100%) invert(48%) sepia(100%) saturate(747%) hue-rotate(170deg) brightness(95%) contrast(102%);
+}
+
+.search input{
+    width: 300px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 3px;
+    border: 2px solid #00a7fa;
+    outline: none;
+    border-radius: 15px;
+    color: #00a7fa;
+    background-color: #023148a7;
+}
+
+.search input::placeholder {
+    color: #00a7fa;
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.movies h2{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.movies .movie {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.movies .movie img {
+    width: auto;
+    height: 450px;
+    max-width: 300px;
+    border-radius: 15px;
+
+}
+
+.movies .movie img:hover {
+    transform: scale(1.1);
+    transition: transform 0.8s;
+}
+
+.movies .movie .container-cartbuy{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #042f4dc4;
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.movies .movie  .cartbuy{
+    filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(678%) hue-rotate(75deg) brightness(90%) contrast(85%);
+    width: 40px;
+    height: 40px;
+}
+
+.movies .movie .container-cartbuy img{
+    cursor: pointer;
+}
+
+.movies .movie .container-cartbuy img:active {
+    transform: scale(0.70);
+    box-shadow: none;
+}

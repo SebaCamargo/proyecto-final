@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import { logout } from "../state/authSlice";
 import user from "../img/user.png"; // imagen del usuario
-import "./Pages.css";
+import "../styles/UserMenu.css";
 
 function UserMenu() {
   const dispatch = useDispatch();

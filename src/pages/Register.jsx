@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router';
 import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import "../styles/Register.css"
 
 export default function Register() {
   const navigate = useNavigate();

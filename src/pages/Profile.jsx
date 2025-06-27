@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { toast } from 'react-toastify';
 import axios from "axios";
 import { login } from "../state/authSlice";
-import "./Pages.css";
+import "../styles/Profile.css";
 
 export default function Profile() {
   const token = useSelector((state) => state.auth.token);

@@ -4,7 +4,7 @@ import { addOrder } from "../state/ordersSlice";
 import { clearCart } from "../state/cartSlice"; 
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import "./Pages.css";
+import "../styles/Checkout.css";
 
 export default function Checkout() {
   const cart = useSelector((state) => state.cart);

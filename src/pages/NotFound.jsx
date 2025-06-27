@@ -1,3 +1,5 @@
+import "../styles/NotFound.css"
+
 function NotFound() {
   return (
     <div className="container-notFound">

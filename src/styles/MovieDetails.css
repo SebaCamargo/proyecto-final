@@ -1,0 +1,116 @@
+.container-movie-detail{
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #023148a7;
+    color: #b6e5ff;
+    overflow: hidden;
+    background-size: cover;
+    height: 100dvh;
+}
+
+.container-movie-detail .no-movies{
+    font-size: 25px;
+    font-weight: 800;
+    margin: 50px;
+}
+
+.container-movie-detail .movie-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    max-width: 1296px;
+}
+
+.container-movie-detail .movie-detail .container-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-movie-detail .movie-detail img{
+    width: 150px;
+    margin: 20px;
+}
+  
+.container-movie-detail .movie-detail .movie-detail-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #b6e5ff;
+}
+  
+.container-movie-detail .movie-detail .movie-detail-text h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px;
+    text-align: center;
+}
+  
+.container-movie-detail .movie-detail .movie-detail-text h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.container-movie-detail .movie-detail .movie-detail-text span{
+    font-size: 20px;
+    font-weight: 400;
+}
+  
+.container-movie-detail .movie-detail .movie-detail-text ul{
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 900px;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 10px;
+}
+  
+.container-movie-detail .movie-detail .movie-detail-text ul li{
+    margin: 3px;
+}
+  
+.container-movie-detail .movie-detail .movie-detail-text ul li span{
+    font-weight: 800;
+    font-size: 16px;
+    color: rgb(143, 5, 5);
+}
+
+.container-movie-detail .movie-detail .movie-detail-text .buy{
+    display: flex;
+    align-items: center;
+}
+
+.container-movie-detail .movie-detail .movie-detail-text img{
+    filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(678%) hue-rotate(75deg) brightness(90%) contrast(85%);
+    width: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container-movie-detail .movie-detail .movie-detail-text img:active{
+    transform: scale(0.90);
+    box-shadow: none;
+}
+
+.container-movie-detail .movie-detail .movie-detail-text p{
+    margin-left: 20px;
+    color: #059c1e;
+    font-size: 18px;
+}
+
+.container-movie-detail .trailer{
+    margin: 20px;
+    width: 60%;
+}
+
+.trailer .video{
+    width: 100%;
+    height: 480px;
+    border-radius: 20px;
+}

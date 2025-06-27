@@ -133,8 +133,8 @@ body {
 
 /* Estilo general del toast */
 .mi-toast {
-  background-color: #b6e5ff!important;  /* fondo azul oscuro */
-  color: #042e4d !important;             /* texto blanco */
+  background-color: #b6e5ff!important; 
+  color: #042e4d !important;           
   border-radius: 10px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
   padding: 10px 15px !important;
@@ -155,4 +155,109 @@ body {
 /* Cambiar color del ícono (tick) en toast success */
 .Toastify__toast--success .Toastify__toast-icon svg {
   fill: #042e4d !important;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #064a74;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: -100%;
+    right: 0;
+    width: 30%;
+    height: auto;
+    background-color: #75d3ff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.3s ease;
+    z-index: 1000;
+    border-radius: 10px;
+    padding: 20px 0;
+  }
+
+  .menu-toggle:checked + .hamburger + .nav-links {
+    top: 80px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links a,
+  .nav-links button {
+    font-size: 22px;
+    margin: 12px 0;
+    color: #00588d;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-links li button {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .user-menu-wrapper {
+    display: none;
+  }
+
+  .user-menu-inline{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .user-menu-inline a{
+    margin: 0;
+  }
+
+  .footer .container-footer h1{
+    font-size: 18px;
+    margin: 5px;
+  }
+  .footer .container-footer .container-personal-information h2 {
+    font-size: 12px;
+    margin: 5px;
+  }
+  .footer .container-footer .container-personal-information h2 span {
+    font-size: 12px;
+    margin: 5px;
+  }
+
+  .footer .container-footer .container-personal-information a{
+    padding: 5px;
+  }
+
+  .footer .container-footer .container-personal-information a img{
+    width: 20px;
+  }
 }

@@ -1,0 +1,123 @@
+.cart{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+
+}
+
+.cart .cart-title{
+    display: flex;
+    margin: 20px;
+    background-color: #def1ff;
+    border-radius: 10px;
+    padding: 5px 25px;
+    align-items: center;
+}
+
+.cart .cart-title img{
+    filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(678%) hue-rotate(75deg) brightness(90%) contrast(85%);
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.cart .cart-title h2{
+    color:#05971bf3;
+    font-size: 40px;
+}
+
+.cart .cart-items{
+    border: 2px solid #05971bf3;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 25px;
+    margin-bottom: 30px;
+    width: 70vw;
+}
+
+.cart .cart-items .cart-item{
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    grid-template-rows: repeat(1, auto);
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: "film quantity butons";
+}
+
+.cart .cart-items .cart-item .item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.cart .cart-items .cart-item .item-thumbnail {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    margin: 0 20px;
+}
+  
+
+.cart .cart-items .cart-item .film {
+    grid-area: film;
+    color: #00588d;
+    font-size: 20px;
+}
+.cart .cart-items .cart-item .quantity {
+    grid-area: quantity;
+    color: #00588d;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px;
+}
+.cart .cart-items .cart-item .butons {
+    grid-area: butons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cart .cart-items .cart-item .butons img{
+    width: 30px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart .cart-items .cart-item .butons img:active{
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.cart .cart-items .cart-item .butons .delete-icon{
+    filter: brightness(0) saturate(2000%) invert(25%) sepia(200%) saturate(2000%) hue-rotate(-10deg);
+    width: 32px;
+}
+
+.cart .cart-items .total{
+    color:#042e4d;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.cart .btn-checkout {
+    padding: 10px 30px;
+    background-color: #064a74;
+    color: #b6e5ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+
+.cart .btn-checkout:hover {
+    background-color: #023148;
+}
