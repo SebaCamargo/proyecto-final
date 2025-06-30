@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import { logout } from "../state/authSlice";
-import user from "../img/user.png"; // imagen del usuario
+import user from "../img/user.png"; 
 import "../styles/UserMenu.css";
 
 function UserMenu() {
@@ -62,9 +62,7 @@ function UserMenu() {
 
       {token && menuOpen && (
         <div className="dropdown-menu">
-          <Link to="/profile" onClick={() => setMenuOpen(false)}>
-            Perfil
-          </Link>
+          <Link to="/profile" onClick={() => setMenuOpen(false)}> Perfil </Link>
           <button onClick={handleLogout}>Cerrar sesión</button>
         </div>
       )}

@@ -117,7 +117,66 @@
     margin-bottom: 40px;
 }
 
-
 .cart .btn-checkout:hover {
     background-color: #023148;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .cart .cart-title {
+      gap: 10px;
+      padding: 10px;
+    }
+  
+    .cart .cart-title h2 {
+      font-size: 28px;
+    }
+  
+    .cart .cart-items {
+      width: 80vw;
+      padding: 15px;
+      font-size: 16px;
+    }
+  
+    .cart .cart-items .cart-item {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "film"
+        "quantity"
+        "butons";
+      text-align: center;
+      justify-items: center;
+    }
+  
+    .cart .cart-items .cart-item .film {
+      font-size: 18px;
+    }
+
+    .cart .cart-items .cart-item .item-info img{
+        width: 200px;
+    }
+  
+    .cart .cart-items .cart-item .quantity {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  
+    .cart .cart-items .cart-item .item-info {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .cart .cart-items .cart-item .item-thumbnail {
+      width: 50px;
+      margin: 10px 0;
+    }
+  
+    .cart .btn-checkout {
+      font-size: 20px;
+      padding: 8px 20px;
+    }
+  
+    .cart .cart-items .total {
+      font-size: 22px;
+    }
 }

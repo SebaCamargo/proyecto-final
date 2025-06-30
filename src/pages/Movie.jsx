@@ -81,7 +81,10 @@ function Movies({ films }) {
 
                   </>
                 ) : (
-                  <h2>No hay imagen disponible</h2>
+                  <div className="no-image">
+                    <span>No se encontro imagen</span>
+                    <span className="no-image-title">{film.title}</span>
+                  </div>
                 )}
               </div>
             </Link>

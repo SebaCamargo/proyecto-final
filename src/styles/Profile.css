@@ -1,200 +1,317 @@
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50px;
-    background-color:#b6e5ff;
-    color: #064a74;
-    max-width: 1200px; 
-    margin: auto;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  background-color: #b6e5ff;
+  color: #064a74;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
 }
 
 .profile-container h1 {
-    font-size: 45px;
-    margin-bottom: 20px;
+  font-size: 45px;
+  margin-bottom: 20px;
 }
-  
-.profile-info {
-    font-size: 18px;
-    color: #060606;
-    display: grid;
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "name lastName address"
-                         "email email phone"
-                         "password password password";
 
-    margin-bottom: 20px;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid #064a74;
-    width: 80%;
-    gap: 30px;
-    border-radius: 10px;
+.profile-info {
+  font-size: 18px;
+  color: #060606;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "name lastName address"
+    "email email phone"
+    "password password password";
+
+  margin-bottom: 20px;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #064a74;
+  width: 80%;
+  gap: 30px;
+  border-radius: 10px;
 }
 
 .profile-info .name {
-    grid-area: name;
+  grid-area: name;
 }
 .profile-info .lastName {
-    grid-area: lastName;
+  grid-area: lastName;
 }
 .profile-info .address {
-    grid-area: address;
+  grid-area: address;
 }
 .profile-info .email {
-    grid-area: email; 
+  grid-area: email;
 }
 .profile-info .phone {
-    grid-area: phone;
+  grid-area: phone;
 }
 
 .profile-info h2 {
-    border-radius: 5px;
-    color: #064a74;
-    font-size: 18px;
-    font-weight: 600;
+  border-radius: 5px;
+  color: #064a74;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .profile-info p {
-    margin: 0;
-    font-size: 18px;
-    background-color: #00588d;
-    color: #def1ff;
-    padding: 5px;
-    font-weight: 400;
-    border-radius: 5px;
+  margin: 0;
+  font-size: 18px;
+  background-color: #00588d;
+  color: #def1ff;
+  padding: 5px;
+  font-weight: 400;
+  border-radius: 5px;
 }
 
-.profile-container .container-btn{
-    display: flex;
-    width: 80%;
-    margin-bottom: 30px;
+.profile-container .container-btn {
+  display: flex;
+  width: 80%;
+  margin-bottom: 30px;
 }
 
 .profile-container .container-btn .btn-save {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #059c1e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-}
-  
-.profile-container .container-btn .btn-save:hover {
-    background-color: #047a15;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #059c1e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
+.profile-container .container-btn .btn-save:hover {
+  background-color: #047a15;
+}
 
 .profile-container .profile-info .input-edit {
-    background-color: #2cbdff;
-    color:#064a74;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 18px;
-    width: 97%;
+  background-color: #2cbdff;
+  color: #064a74;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  width: 97%;
 }
 
 .profile-container .profile-info .input-edit:focus {
-    outline: none;
-    border: 2px solid #064a74;
-    background-color:#2cbdff;
+  outline: none;
+  border: 2px solid #064a74;
+  background-color: #2cbdff;
 }
 
 .profile-container .profile-info .input-edit:hover {
-    background-color: #2cbdff;
+  background-color: #2cbdff;
 }
 
 .profile-container .profile-info .input-edit:-moz-autofill {
-    background-color:  #2cbdff !important;
-    color: #064a74 !important;
+  background-color: #2cbdff !important;
+  color: #064a74 !important;
 }
 
 .profile-container .profile-info .input-edit:-webkit-autofill {
-    background-color: #2cbdff !important;
-    -webkit-box-shadow: 0 0 0 1000px #2cbdff inset !important;
-    -webkit-text-fill-color: #064a74 !important;
+  background-color: #2cbdff !important;
+  -webkit-box-shadow: 0 0 0 1000px #2cbdff inset !important;
+  -webkit-text-fill-color: #064a74 !important;
 }
 
 .profile-container .profile-info .btn-password {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;    
-    width: 100%;
-    grid-area: password;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  grid-area: password;
 }
 
-.profile-container .profile-info .btn-password .password{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.profile-container .profile-info .btn-password .password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-container .profile-info .btn-password .btn-password-toggle {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #059c1e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #059c1e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.profile-container .orders-section{
-    width: 80%;
-    padding: 10px;
-    width: 80%;
-    font-size: 18px;
-    margin-bottom: 20px;
+.profile-container .orders-section {
+  width: 80%;
+  padding: 10px;
+  width: 80%;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
-.profile-container .orders-section h2{
-    margin: 10px 0 20px 20px ;
-    color:#064a74;
+.profile-container .orders-section h2 {
+  margin: 10px 0 20px 20px;
+  color: #064a74;
 }
 
-.profile-container .orders-section .order-item{
-    color: #0083d4;
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    border: 2px solid #064a74;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 0 20px;
+.profile-container .orders-section .order-item {
+  color: #0083d4;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  border: 2px solid #064a74;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 0 20px;
 }
 
-
-.profile-container .orders-section .order-item .order-title-data{
-    font-size: 20px;
-    margin: 10px;
-    font-weight: 500;
+.profile-container .orders-section .order-item .order-title-data {
+  font-size: 20px;
+  margin: 10px;
+  font-weight: 500;
 }
 
-.profile-container .orders-section .order-item h3{
-    margin: 10px 20px ;
-    font-weight: 700;
-    color: #042e4d;
+.profile-container .orders-section .order-item h3 {
+  margin: 10px 20px;
+  font-weight: 700;
+  color: #042e4d;
 }
 
-.profile-container .orders-section .total-orders{
-    color: #042e4d;
-    margin-top: 20px;
-    padding: 10px;
+.profile-container .orders-section .total-orders {
+  color: #042e4d;
+  margin-top: 20px;
+  padding: 10px;
 }
 
+.profile-container .orders-section .order-item .order-list {
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(1, auto);
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas: "film quantity mony";
+}
 
-.profile-container .orders-section .order-item .order-list{
-    list-style: none;
-    display: grid;
-    grid-template-rows: repeat(1, auto);
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-areas: "film quantity mony";
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 70px 10px;
+    }
+
+    .profile-container h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .profile-info {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+      "name"
+      "lastName"
+      "address"
+      "email"
+      "phone"
+      "password";
+        width: 80%;
+        padding: 15px;
+    }
+
+    .profile-info h2,
+    .profile-info p,
+    .input-edit {
+        font-size: 16px;
+        width: 50%;
+        text-align: center;
+    }
+
+    .name,
+    .lastname,
+    .address,
+    .email,
+    .phone{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-container .profile-info .input-edit{
+        width: 70%;
+    }
+
+    .profile-container .container-btn {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .profile-container .container-btn .btn-save {
+        width: 180px;
+        font-size: 16px;
+    }
+
+    .profile-container .profile-info .btn-password .btn-password-toggle {
+        font-size: 14px;
+        width: 200px;
+    }
+
+    .profile-container .orders-section {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    .profile-container .orders-section h2 {
+        font-size: 22px;
+        margin-left: 10px;
+    }
+
+    .profile-container .orders-section .order-item {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .profile-container .orders-section .order-item .order-title-data,
+    .profile-container .orders-section .order-item h3 {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .profile-container .orders-section .order-item .order-list {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "film"
+        "quantity"
+        "mony";
+        row-gap: 10px;
+    }
+
+    .profile-container .orders-section .order-item p{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    .profile-info h2,
+    .profile-info p,
+    .input-edit {
+        width: 90%;
+    }
+
+    .profile-container .profile-info .input-edit{
+        width: 90%;
+    }
+
+    .profile-info h2,
+    .profile-info p,
+    .input-edit {
+        width: 80%;
+    }
+
+    .profile-container .orders-section .order-item .order-list{
+        padding: 0;
+    }
 }

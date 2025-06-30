@@ -15,7 +15,7 @@ body {
   width: 100%;
   z-index: 1000;
   height: 80px;
-  background-color: rgba(0, 0, 0, 0.254); 
+  background-color: #042f4dc1; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,17 +41,16 @@ body {
 
 .nav-links a,
 .hero ul li a {
-  color: #00588d;
+  color: #75d3ff;
   text-decoration: none;
   font-size: 18px;
 }
 
 .hero ul li a span {
-  color: #0068ab;
+  color: #75d3ff;
   font-size: 25px;
   font-weight: 800;
   padding: 3px;
-  background-color: #b6e5ff;
   border-radius: 5px;
 }
 
@@ -89,8 +88,6 @@ body {
   min-width: 10px;
   text-align: center;
 }
-
-/*pie de pagina*/
 
 .footer{
   background-color: #064a74;
@@ -131,7 +128,6 @@ body {
   width: 25px;
 }
 
-/* Estilo general del toast */
 .mi-toast {
   background-color: #b6e5ff!important; 
   color: #042e4d !important;           
@@ -140,19 +136,16 @@ body {
   padding: 10px 15px !important;
 }
 
-/* Estilo del cuerpo del toast */
 .mi-toast-body {
   font-size: 16px;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Cambiar color de la barra de progreso en toast success */
 .Toastify__progress-bar--success {
   background: #042e4d !important;
 }
 
-/* Cambiar color del ícono (tick) en toast success */
 .Toastify__toast--success .Toastify__toast-icon svg {
   fill: #042e4d !important;
 }
@@ -179,7 +172,7 @@ body {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: #064a74;
+  background: #75d3ff;
   border-radius: 2px;
 }
 
@@ -188,9 +181,9 @@ body {
     position: fixed;
     top: -100%;
     right: 0;
-    width: 30%;
+    width: 50%;
     height: auto;
-    background-color: #75d3ff;
+    background-color: #042e4d;
     flex-direction: column;
     align-items: center;
     justify-content: center;

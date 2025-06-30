@@ -13,7 +13,6 @@ const rootReducer = combineReducers({
     orders: ordersReducer,
 });
 
-
 const persistConfig = {
     key: "root",          
     storage,               

@@ -94,6 +94,37 @@
     transition: transform 0.8s;
 }
 
+.no-image {
+    width: 300px;
+    height: 450px;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+  
+.no-image-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+  
+.no-image-text {
+    font-size: 16px;
+    color: #555;
+}
+
 .movies .movie .container-cartbuy{
     position: absolute;
     top: 20px;
@@ -122,3 +153,10 @@
     transform: scale(0.70);
     box-shadow: none;
 }
+
+@media (max-width: 768px){
+    .movies-container {
+        margin-top: -600px; 
+    }
+}
+

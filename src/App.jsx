@@ -95,11 +95,10 @@ function App() {
                 <li>
                   <Link to="/">
                     <span>UruFlix</span>
-                  </Link>{" "}
+                  </Link>
                 </li>
               </div>
 
-              {/* Menú hamburguesa solo para móvil */}
               {isMobile && (
                 <>
                   <input
@@ -118,31 +117,33 @@ function App() {
 
               <div className="nav-links">
                 <li>
-                  <Link to="/" onClick={handleLinkClick}>
-                    Home
-                  </Link>
+                  <Link to="/" onClick={handleLinkClick}> Home </Link>
                 </li>
                 <li>
-                  <Link to="/about" onClick={handleLinkClick}>
-                    About
-                  </Link>
+                  <Link to="/about" onClick={handleLinkClick}> About </Link>
                 </li>
 
                 <li className="user-menu-inline">
-  {isMobile ? (
-    token ? (
-      <>
-        <a href="/profile" onClick={handleLinkClick}>Perfil</a>
-        <button onClick={() => { handleLogout(); handleLinkClick(); }}>Cerrar sesión</button>
-
-      </>
-    ) : (
-      <a href="/login" onClick={handleLinkClick}>Login</a>
-    )
-  ) : (
-    <UserMenu />
-  )}
-</li>
+                  {isMobile ? (
+                    token ? (
+                      <>
+                        <a href="/profile" onClick={handleLinkClick}> Perfil </a>
+                        <button
+                          onClick={() => {
+                            handleLogout();
+                            handleLinkClick();
+                          }}
+                        >
+                          Cerrar sesión
+                        </button>
+                      </>
+                    ) : (
+                      <a href="/login" onClick={handleLinkClick}> Login </a>
+                    )
+                  ) : (
+                    <UserMenu />
+                  )}
+                </li>
                 <li>
                   <div
                     className="cart-icon-wrapper"
@@ -163,10 +164,7 @@ function App() {
                 </li>
 
                 <li>
-                  {" "}
-                  <Link to="/register" onClick={handleLinkClick}>
-                    Register
-                  </Link>{" "}
+                  <Link to="/register" onClick={handleLinkClick}> Register </Link>
                 </li>
               </div>
             </ul>
@@ -200,20 +198,15 @@ function App() {
         <div className="container-footer">
           <h1>UruFlix</h1>
           <div className="container-personal-information">
-            <h2>
-              Creado por : <span>Sebastian Camargo</span>
-            </h2>
+            <h2> Creado por : <span>Sebastian Camargo</span> </h2>
             <a href="https://github.com/SebaCamargo" target="_blank">
-              {" "}
-              <img src={github} alt="icon github" />{" "}
+              <img src={github} alt="icon github" />
             </a>
             <a href="https://www.linkedin.com/in/seba-camargo/" target="_blank">
-              {" "}
-              <img src={linkedin} alt="icon linkedin" />{" "}
+              <img src={linkedin} alt="icon linkedin" />
             </a>
             <a href="https://www.instagram.com/sebacamargo360/" target="_blank">
-              {" "}
-              <img src={insta} alt="icon instagram" />{" "}
+              <img src={insta} alt="icon instagram" />
             </a>
           </div>
         </div>
