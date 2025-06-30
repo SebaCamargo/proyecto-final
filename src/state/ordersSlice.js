@@ -2,13 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const ordersSlice = createSlice({
   name: 'orders',
-  initialState: [],
+  initialState: {}, 
   reducers: {
     addOrder: (state, action) => {
-      state.push(action.payload);
+      const { userId, order } = action.payload;
+      
+      if (!state[userId]) {
+        state[userId] = [];
+      }
+      
+      state[userId].push(order);
     },
+    
+    clearAllUserData: (state) => {
+      return {};
+    }
   },
 });
 
-export const { addOrder } = ordersSlice.actions;
+export const { addOrder, clearAllUserData } = ordersSlice.actions;
 export default ordersSlice.reducer;

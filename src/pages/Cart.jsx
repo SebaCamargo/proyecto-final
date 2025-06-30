@@ -9,11 +9,24 @@ import delet from "../img/delete.png"
 import "../styles/Cart.css";
 
 export default function Cart() {
-  const cart = useSelector(state => state.cart);
+  const { user } = useSelector(state => state.auth);
+  const cart = useSelector(state => state.cart[user?.id] || []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  const handleRemoveFromCart = (movieId) => {
+    dispatch(removeFromCart({ userId: user.id, movieId }));
+  };
+
+  const handleIncreaseQuantity = (movieId) => {
+    dispatch(increaseQuantity({ userId: user.id, movieId }));
+  };
+
+  const handleDecreaseQuantity = (movieId) => {
+    dispatch(decreaseQuantity({ userId: user.id, movieId }));
+  };
 
   return (
     <div className="cart">
@@ -35,9 +48,9 @@ export default function Cart() {
                 </div>
                 <p className="quantity">Cantidad: {item.quantity} - $ {item.price} c/u</p>
                 <div className="butons">
-                  <img onClick={() => dispatch(increaseQuantity(item.id))} src={more} alt="plus icon " />
-                  <img onClick={() => dispatch(decreaseQuantity(item.id))} src={min} alt="minus icon " />
-                  <img onClick={() => dispatch(removeFromCart(item.id))} className="delete-icon" src={delet} alt="delete icon" />
+                  <img onClick={() => handleIncreaseQuantity(item.id)} src={more} alt="plus icon " />
+                  <img onClick={() => handleDecreaseQuantity(item.id)} src={min} alt="minus icon " />
+                  <img onClick={() => handleRemoveFromCart(item.id)} className="delete-icon" src={delet} alt="delete icon" />
                 </div>
 
               </div>

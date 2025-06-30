@@ -1,4 +1,3 @@
-// pages/Checkout.js
 import { useSelector, useDispatch } from "react-redux";
 import { addOrder } from "../state/ordersSlice";
 import { clearCart } from "../state/cartSlice"; 
@@ -7,8 +6,8 @@ import { toast } from "react-toastify";
 import "../styles/Checkout.css";
 
 export default function Checkout() {
-  const cart = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.auth.user);
+  const { user } = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.cart[user?.id] || []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,8 +21,13 @@ export default function Checkout() {
       date: new Date().toLocaleString(),
     };
 
-    dispatch(addOrder(newOrder));
-    dispatch(clearCart()); 
+    dispatch(addOrder({ 
+      userId: user.id, 
+      order: newOrder 
+    }));
+
+    dispatch(clearCart({ userId: user.id })); 
+    
     toast.success("¡Compra realizada con éxito!");
     navigate("/profile");
   };
@@ -68,9 +72,7 @@ export default function Checkout() {
           <h3>Total a pagar: ${total.toFixed(2)}</h3>
         </div>
       </div>
-      <button onClick={handleFinish} className="btn-finish">
-        Finalizar transacción
-      </button>
+      <button onClick={handleFinish} className="btn-finish"> Finalizar transacción </button>
     </div>
   );
 }

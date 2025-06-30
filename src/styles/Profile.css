@@ -26,28 +26,30 @@
     "name lastName address"
     "email email phone"
     "password password password";
-
   margin-bottom: 20px;
-  gap: 10px;
+  gap: 30px;
   padding: 10px;
   border: 1px solid #064a74;
   width: 80%;
-  gap: 30px;
   border-radius: 10px;
 }
 
 .profile-info .name {
   grid-area: name;
 }
+
 .profile-info .lastName {
   grid-area: lastName;
 }
+
 .profile-info .address {
   grid-area: address;
 }
+
 .profile-info .email {
   grid-area: email;
 }
+
 .profile-info .phone {
   grid-area: phone;
 }
@@ -73,9 +75,11 @@
   display: flex;
   width: 80%;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
-.profile-container .container-btn .btn-save {
+.profile-container .container-btn .btn-save,
+.profile-container .btn-save {
   margin-top: 10px;
   padding: 10px 15px;
   background-color: #059c1e;
@@ -84,12 +88,15 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+  transition: background-color 0.3s ease;
 }
 
-.profile-container .container-btn .btn-save:hover {
+.profile-container .container-btn .btn-save:hover,
+.profile-container .btn-save:hover {
   background-color: #047a15;
 }
 
+/* Inputs de edición */
 .profile-container .profile-info .input-edit {
   background-color: #2cbdff;
   color: #064a74;
@@ -121,6 +128,7 @@
   -webkit-text-fill-color: #064a74 !important;
 }
 
+/* Sección de password */
 .profile-container .profile-info .btn-password {
   display: flex;
   flex-direction: column;
@@ -136,17 +144,26 @@
   align-items: center;
 }
 
-.profile-container .profile-info .btn-password .btn-password-toggle {
+/* Botón toggle password */
+.profile-container .profile-info .btn-password .btn-password-toggle,
+.profile-container .btn-password-toggle {
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #059c1e;
+  background-color: #0083d4;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
+.profile-container .profile-info .btn-password .btn-password-toggle:hover,
+.profile-container .btn-password-toggle:hover {
+  background-color: #0083d4;
+}
+
+/* Sección de órdenes */
 .profile-container .orders-section {
   width: 80%;
   padding: 10px;
@@ -197,121 +214,154 @@
   grid-template-areas: "film quantity mony";
 }
 
+/* Botones generales adicionales */
+.profile-container button,
+.profile-container .btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin: 10px;
+  background-color: #0083d4;
+  color: white;
+}
+
+.profile-container .btn-primary {
+  background-color: #059c1e;
+  color: white;
+}
+
+.profile-container .btn-primary:hover {
+  background-color: #047a15;
+}
+
+.profile-container .btn-secondary {
+  background-color: #0083d4;
+  color: white;
+}
+
+.profile-container .btn-secondary:hover {
+  background-color: #064a74;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
-    .profile-container {
-        padding: 70px 10px;
-    }
+  .profile-container {
+    padding: 70px 10px;
+  }
 
-    .profile-container h1 {
-        font-size: 32px;
-        text-align: center;
-    }
+  .profile-container h1 {
+    font-size: 32px;
+    text-align: center;
+  }
 
-    .profile-info {
-        grid-template-columns: 1fr;
-        grid-template-areas:
+  .profile-info {
+    grid-template-columns: 1fr;
+    grid-template-areas:
       "name"
       "lastName"
       "address"
       "email"
       "phone"
       "password";
-        width: 80%;
-        padding: 15px;
-    }
+    width: 80%;
+    padding: 15px;
+  }
 
-    .profile-info h2,
-    .profile-info p,
-    .input-edit {
-        font-size: 16px;
-        width: 50%;
-        text-align: center;
-    }
+  .profile-info h2,
+  .profile-info p,
+  .input-edit {
+    font-size: 16px;
+    width: 50%;
+    text-align: center;
+  }
 
-    .name,
-    .lastname,
-    .address,
-    .email,
-    .phone{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .name,
+  .lastName,
+  .address,
+  .email,
+  .phone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .profile-container .profile-info .input-edit{
-        width: 70%;
-    }
+  .profile-container .profile-info .input-edit {
+    width: 70%;
+  }
 
-    .profile-container .container-btn {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
+  .profile-container .container-btn {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 
-    .profile-container .container-btn .btn-save {
-        width: 180px;
-        font-size: 16px;
-    }
+  .profile-container .container-btn .btn-save,
+  .profile-container .btn-save {
+    width: 180px;
+    font-size: 16px;
+  }
 
-    .profile-container .profile-info .btn-password .btn-password-toggle {
-        font-size: 14px;
-        width: 200px;
-    }
+  .profile-container .profile-info .btn-password .btn-password-toggle,
+  .profile-container .btn-password-toggle {
+    font-size: 14px;
+    width: 200px;
+  }
 
-    .profile-container .orders-section {
-        width: 80%;
-        font-size: 16px;
-    }
+  .profile-container .orders-section {
+    width: 80%;
+    font-size: 16px;
+  }
 
-    .profile-container .orders-section h2 {
-        font-size: 22px;
-        margin-left: 10px;
-    }
+  .profile-container .orders-section h2 {
+    font-size: 22px;
+    margin-left: 10px;
+  }
 
-    .profile-container .orders-section .order-item {
-        margin-left: 0;
-        padding: 15px;
-    }
+  .profile-container .orders-section .order-item {
+    margin-left: 0;
+    padding: 15px;
+  }
 
-    .profile-container .orders-section .order-item .order-title-data,
-    .profile-container .orders-section .order-item h3 {
-        font-size: 16px;
-        margin: 5px 0;
-    }
+  .profile-container .orders-section .order-item .order-title-data,
+  .profile-container .orders-section .order-item h3 {
+    font-size: 16px;
+    text-align: center;
+  }
 
-    .profile-container .orders-section .order-item .order-list {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-        "film"
-        "quantity"
-        "mony";
-        row-gap: 10px;
-    }
+  .profile-container .orders-section .order-item .order-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "film"
+      "quantity"
+      "mony";
+    row-gap: 10px;
+    justify-items: center;
+    padding: 0;
+  }
 
-    .profile-container .orders-section .order-item p{
-        font-size: 20px;
-    }
+  .profile-container .orders-section .order-item p {
+    font-size: 20px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 425px) {
-    .profile-info h2,
-    .profile-info p,
-    .input-edit {
-        width: 90%;
-    }
+  .profile-info h2,
+  .profile-info p,
+  .input-edit {
+    width: 80%;
+  }
 
-    .profile-container .profile-info .input-edit{
-        width: 90%;
-    }
+  .profile-container .profile-info .input-edit {
+    width: 90%;
+  }
 
-    .profile-info h2,
-    .profile-info p,
-    .input-edit {
-        width: 80%;
-    }
-
-    .profile-container .orders-section .order-item .order-list{
-        padding: 0;
-    }
+  .profile-container .orders-section .order-item .order-list {
+    padding: 0;
+  }
 }

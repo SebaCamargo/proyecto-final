@@ -4,9 +4,11 @@ import { Routes, Route, Link } from "react-router";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { logout } from "./state/authSlice";
+import { clearAllUserData as clearCartData } from "./state/cartSlice";
+import { clearAllUserData as clearOrdersData } from "./state/ordersSlice";
 import { useRef } from "react";
 import Movies from "./pages/Movie";
 import About from "./pages/About";
@@ -28,8 +30,8 @@ function App() {
   const [films, setFilms] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
-  const cartItems = useSelector((state) => state.cart);
+  const { token, user } = useSelector((state) => state.auth);
+  const cartItems = useSelector((state) => state.cart[user?.id] || []);
   const menuToggleRef = useRef();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -72,7 +74,10 @@ function App() {
       menuToggleRef.current.checked = false;
     }
 
+    dispatch(clearCartData());
+    dispatch(clearOrdersData());
     dispatch(logout());
+
     toast.success("Gracias por visitarnos. ¡Has cerrado sesión!");
     navigate("/login");
   };
@@ -93,9 +98,7 @@ function App() {
             <ul>
               <div className="logo">
                 <li>
-                  <Link to="/">
-                    <span>UruFlix</span>
-                  </Link>
+                  <Link to="/"> <span>UruFlix</span> </Link>
                 </li>
               </div>
 
@@ -198,7 +201,7 @@ function App() {
         <div className="container-footer">
           <h1>UruFlix</h1>
           <div className="container-personal-information">
-            <h2> Creado por : <span>Sebastian Camargo</span> </h2>
+            <h2> Creado por : <span>Sebastian Camargo</span></h2>
             <a href="https://github.com/SebaCamargo" target="_blank">
               <img src={github} alt="icon github" />
             </a>

@@ -2,40 +2,76 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: {},
   reducers: {
     addToCart: (state, action) => {
-      const movie = action.payload;
-      const exists = state.find(item => item.id === movie.id);
-
+      const { userId, movie } = action.payload;
+      
+      if (!state[userId]) {
+        state[userId] = [];
+      }
+      
+      const exists = state[userId].find(item => item.id === movie.id);
+      
       if (exists) {
         exists.quantity += 1;
       } else {
-        state.push({ ...movie, quantity: 1 });
+        state[userId].push({ ...movie, quantity: 1 });
       }
     },
+    
     removeFromCart: (state, action) => {
-      return state.filter(item => item.id !== action.payload);
+      const { userId, movieId } = action.payload;
+      
+      if (state[userId]) {
+        state[userId] = state[userId].filter(item => item.id !== movieId);
+      }
     },
+    
     increaseQuantity: (state, action) => {
-      const movie = state.find(item => item.id === action.payload);
-      if (movie) {
-        movie.quantity += 1;
+      const { userId, movieId } = action.payload;
+      
+      if (state[userId]) {
+        const movie = state[userId].find(item => item.id === movieId);
+        if (movie) {
+          movie.quantity += 1;
+        }
       }
     },
+    
     decreaseQuantity: (state, action) => {
-      const movie = state.find(item => item.id === action.payload);
-      if (movie && movie.quantity > 1) {
-        movie.quantity -= 1;
-      } else {
-        return state.filter(item => item.id !== action.payload);
+      const { userId, movieId } = action.payload;
+      
+      if (state[userId]) {
+        const movie = state[userId].find(item => item.id === movieId);
+        if (movie && movie.quantity > 1) {
+          movie.quantity -= 1;
+        } else {
+          state[userId] = state[userId].filter(item => item.id !== movieId);
+        }
       }
     },
-    clearCart: () => {
-      return [];
+    
+    clearCart: (state, action) => {
+      const { userId } = action.payload;
+      if (state[userId]) {
+        state[userId] = [];
+      }
+    },
+    
+    clearAllUserData: (state) => {
+      return {};
     }
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } = cartSlice.actions;
+export const { 
+  addToCart, 
+  removeFromCart, 
+  increaseQuantity, 
+  decreaseQuantity, 
+  clearCart,
+  clearAllUserData 
+} = cartSlice.actions;
+
 export default cartSlice.reducer;

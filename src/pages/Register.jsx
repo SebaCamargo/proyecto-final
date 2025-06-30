@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router';
-import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import "../styles/Register.css"
 
 export default function Register() {
   const navigate = useNavigate();
-  const token = useSelector((state) => state.auth.token); // token desde redux
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -35,7 +33,6 @@ export default function Register() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -43,6 +40,7 @@ export default function Register() {
       navigate('/login');
     } catch (error) {
       console.log(error);
+      toast.error("Error al registrarse. Inténtalo de nuevo.");
     }
   };
 
@@ -55,7 +53,7 @@ export default function Register() {
 
         <form id='registerForm' onSubmit={handleSubmit}>
           <div className='register-group'>
-            <label forhtml='firstName'>Nombre</label>
+            <label htmlFor='firstName'>Nombre</label>
             <input
               type='text'
               id='firstName'
@@ -70,7 +68,7 @@ export default function Register() {
           </div>
 
           <div className='register-group'>
-            <label forhtml='lastName'>Apellido</label>
+            <label htmlFor='lastName'>Apellido</label>
             <input
               type='text'
               id='lastName'
@@ -85,7 +83,7 @@ export default function Register() {
           </div>
 
           <div className='register-group alignment'>
-            <label forhtml='address'>Dirección</label>
+            <label htmlFor='address'>Dirección</label>
             <div className='input-register'>
               <input
                 type='text'
@@ -102,7 +100,7 @@ export default function Register() {
           </div>
 
           <div className='register-group alignment'>
-            <label forhtml='phone'>Teléfono</label>
+            <label htmlFor='phone'>Teléfono</label>
             <div className='input-register'>
               <input
                 type='tel'
@@ -119,7 +117,7 @@ export default function Register() {
           </div>
 
           <div className='register-group alignment'>
-            <label forhtml='registerEmail'>Email</label>
+            <label htmlFor='registerEmail'>Email</label>
             <div className='input-register'>
               <input
                 type='email'
@@ -136,7 +134,7 @@ export default function Register() {
           </div>
 
           <div className='register-group alignment'>
-            <label forhtml='registerPassword'>Contraseña</label>
+            <label htmlFor='registerPassword'>Contraseña</label>
             <div className='input-register'>
               <input
                 type='password'

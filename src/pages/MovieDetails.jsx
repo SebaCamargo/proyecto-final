@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../state/cartSlice";
 import { toast } from 'react-toastify';
 import buy from "../img/checkout.png"
@@ -10,7 +10,8 @@ import "../styles/MovieDetails.css"
 function MovieDetail() {
   const params = useParams();
   const dispatch = useDispatch();
-  const [movie, setMovie] = useState([]); 
+  const { user } = useSelector((state) => state.auth);
+  const [movie, setMovie] = useState(null); 
   const [trailer, setTrailer] = useState(null);
 
   const apikey = "1f6c05af9a052262cc5f79b5bbfe674b";
@@ -35,6 +36,24 @@ function MovieDetail() {
       });
   }, [params.idMovie]);
 
+  const handleAddToCart = () => {
+    if (!user) {
+      toast.error("Debes iniciar sesión para agregar al carrito");
+      return;
+    }
+
+    toast.success(`"${movie.title}" agregada al carrito!`);
+    dispatch(addToCart({
+      userId: user.id,
+      movie: {
+        id: movie.id,
+        title: movie.title,
+        price: Number((movie.vote_average * 10).toFixed(0)),
+        img: `https://image.tmdb.org/t/p/w300${movie.poster_path}`,
+      }
+    }));
+  };
+
   if (!movie) {
     return <h1 className="no-movies">Cargando...</h1>;
   }
@@ -48,39 +67,25 @@ function MovieDetail() {
         }}
       >
         
-        {movie.length === 0 ? (
-          <h1 className="no-movies">Cargando...</h1>
-        ) : (
-          <div className="movie-detail">
-            <div className="container-image">
-              <img src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} alt={movie.title} />
-            </div>
+        <div className="movie-detail">
+          <div className="container-image">
+            <img src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} alt={movie.title} />
+          </div>
 
-            <div className="movie-detail-text">
-              <h1>Título : {movie.title}</h1>
-              <h2>  Descripción : <span>{movie.overview}</span></h2>
-              <ul>
-                <li> Año de estreno : {movie.release_date} |</li>
-                <li> País de origen: {movie.origin_country} |</li>
-                <li> Puntuación: <span>{movie?.vote_average?.toFixed(1) ?? "N/A"}</span> / 10 </li> 
-              </ul>
-              <div className="buy"
-                onClick={() => {
-                  toast.success(`"${movie.title}" agregada al carrito!`);
-                  dispatch(addToCart({
-                    id: movie.id,
-                    title: movie.title,
-                    price: Number((movie.vote_average * 10).toFixed(0)),
-                    img: `https://image.tmdb.org/t/p/w300${movie.poster_path}`,
-                  }));
-                }}>
-                  <img src={buy} alt="cart buy" />
-                  <p>USD {movie?.vote_average ? (movie.vote_average * 10).toFixed(0) : "Aún no tiene un precio establecido"}</p>
-              </div>
-
+          <div className="movie-detail-text">
+            <h1>Título : {movie.title}</h1>
+            <h2>Descripción : <span>{movie.overview}</span></h2>
+            <ul>
+              <li> Año de estreno : {movie.release_date} |</li>
+              <li> País de origen: {movie.origin_country} |</li>
+              <li> Puntuación: <span>{movie?.vote_average?.toFixed(1) ?? "N/A"}</span> / 10 </li> 
+            </ul>
+            <div className="buy" onClick={handleAddToCart}>
+              <img src={buy} alt="cart buy" />
+              <p>USD {movie?.vote_average ? (movie.vote_average * 10).toFixed(0) : "Aún no tiene un precio establecido"}</p>
             </div>
           </div>
-        )}
+        </div>
         
        {trailer && (
           <div className="trailer">

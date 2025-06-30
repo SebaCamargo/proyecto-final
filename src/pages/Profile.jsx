@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import axios from "axios";
 import { login } from "../state/authSlice";
 import "../styles/Profile.css";
 
 export default function Profile() {
-  const token = useSelector((state) => state.auth.token);
-  const user = useSelector((state) => state.auth.user);
-  const cart = useSelector((state) => state.cart);
-  const orders = useSelector(state => state.orders);
+  const { token, user } = useSelector((state) => state.auth);
+  const orders = useSelector((state) => state.orders[user?.id] || []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -41,7 +39,8 @@ export default function Profile() {
 
   const handleChange = (e) => {
     setEditedData({
-      ...editedData, [e.target.name]: e.target.value,
+      ...editedData,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -74,7 +73,7 @@ export default function Profile() {
       dispatch(login({ token, user: updated.data }));
       setUserData(updated.data);
       setEditedData(updated.data);
-      setNewPassword(""); 
+      setNewPassword("");
       setShowPasswordField(false);
       setIsEditing(false);
       toast.success("Cambios realizados correctamente!");
@@ -82,6 +81,13 @@ export default function Profile() {
       console.error("Error al actualizar el perfil:", error);
       toast.error("Hubo un error al guardar los cambios");
     }
+  };
+
+  const handleCancel = () => {
+    setEditedData(userData);
+    setNewPassword("");
+    setShowPasswordField(false);
+    setIsEditing(false);
   };
 
   if (!userData) {
@@ -97,7 +103,6 @@ export default function Profile() {
       <h1>Mi Perfil</h1>
 
       <div className="profile-info">
-        
         <div className="name">
           <h2>Nombre</h2>
           {isEditing ? (
@@ -112,7 +117,7 @@ export default function Profile() {
           )}
         </div>
 
-        <div className="lastname">
+        <div className="lastName">
           <h2>Apellido</h2>
           {isEditing ? (
             <input
@@ -203,33 +208,38 @@ export default function Profile() {
         {isEditing ? (
           <>
             <button className="btn-save" onClick={handleSave}> Guardar cambios </button>
+            <button className="btn-cancel" onClick={handleCancel}> Cancelar </button>
           </>
         ) : (
-          <button className="btn-save" onClick={() => setIsEditing(true)}>  Editar mi estado </button>
+          <button className="btn-save" onClick={() => setIsEditing(true)}> Editar perfil </button>
         )}
       </div>
 
       <div className="orders-section">
         <h2>Mis Órdenes</h2>
-          {orders.length === 0 ? (
-            <p>No tienes órdenes registradas.</p>
-          ) : (
-            orders.map((order, index) => (
-              <div key={order.id} className="order-item">
-                <p className="order-title-data"><strong>Orden #{index + 1}</strong> - Fecha: {order.date}</p>
-                <h3>Items</h3>
-                  {order.items.map(item => (
-                    <ul className="order-list" key={item.id}>
-                      <li> {item.title} </li>
-                      <li> {item.quantity} unidad(es) </li>
-                      <li> $ {item.price} c/u </li>
-                    </ul>
-                  ))}
-                <p><strong>Total:</strong> ${order.total.toFixed(2)}</p>
-              </div>
-            ))
-          )}
-        </div>
+        {orders.length === 0 ? (
+          <p>No tienes órdenes registradas.</p>
+        ) : (
+          orders.map((order, index) => (
+            <div key={order.id} className="order-item">
+              <p className="order-title-data">
+                <strong>Orden #{index + 1}</strong> - Fecha: {order.date}
+              </p>
+              <h3>Items</h3>
+              {order.items.map((item) => (
+                <ul className="order-list" key={item.id}>
+                  <li> {item.title} </li>
+                  <li> {item.quantity} unidad(es) </li>
+                  <li> $ {item.price} c/u </li>
+                </ul>
+              ))}
+              <p>
+                <strong>Total:</strong> ${order.total.toFixed(2)}
+              </p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }

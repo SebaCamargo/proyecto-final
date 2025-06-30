@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../state/cartSlice";
 import { toast } from 'react-toastify';
 import axios from "axios";
@@ -13,6 +13,7 @@ function Movies({ films }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   const apikey = "1f6c05af9a052262cc5f79b5bbfe674b";
 
@@ -23,9 +24,7 @@ function Movies({ films }) {
     }
 
     axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${searchInput}`
-      )
+      .get( `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${searchInput}`)
       .then((response) => {
         setSearchResults(response.data.results);
       });
@@ -33,10 +32,31 @@ function Movies({ films }) {
 
   const moviesToDisplay = searchInput ? searchResults : films;
 
+  const handleAddToCart = (film) => {
+    if (!user) {
+      toast.error("Debes iniciar sesión para agregar al carrito");
+      return;
+    }
+
+    toast.success(`"${film.title}" agregada al carrito!`);
+    
+    dispatch(
+      addToCart({
+        userId: user.id,
+        movie: {
+          id: film.id,
+          title: film.title,
+          price: Number((film.vote_average * 10).toFixed(0)),
+          img: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
+        }
+      })
+    );
+  };
+
   return (
     <>
     <div className="imagen-fondo-container">
-      <img src={miImagen} className="imagen-fondo" ></img>
+      <img src={miImagen} className="imagen-fondo" alt="Fondo"></img>
     </div>
 
     <div className="movies-container">
@@ -64,16 +84,7 @@ function Movies({ films }) {
                       onClick={(event) => {
                         event.preventDefault(); 
                         event.stopPropagation();
-                        toast.success(`"${film.title}" agregada al carrito!`); 
-
-                        dispatch(
-                          addToCart({
-                            id: film.id,
-                            title: film.title,
-                            price: Number((film.vote_average * 10).toFixed(0)),
-                            img: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
-                          })
-                        );
+                        handleAddToCart(film);
                       }}
                     >
                       <img className="cartbuy" src={cartbuy} alt="supermarcket car" />
