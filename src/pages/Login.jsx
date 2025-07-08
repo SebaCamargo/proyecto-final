@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { login } from "../state/authSlice";
-import { toast } from 'react-toastify';
-import "../styles/Login.css"
+import { transferGuestCart } from "../state/cartSlice";
+import { toast } from "react-toastify";
+import "../styles/Login.css";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -42,8 +43,11 @@ export default function Login() {
 
       dispatch(login({ token, user }));
 
+      // Transferir el carrito de invitado al carrito del usuario
+      dispatch(transferGuestCart({ userId: user.id }));
+
       toast.success("¡Sesión iniciada. ¡Disfruta tu experiencia!");
-      
+
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -81,7 +85,8 @@ export default function Login() {
               value={formData.password}
               onInput={(event) =>
                 setFormData((prev) => ({
-                  ...prev, password: event.target.value,
+                  ...prev,
+                  password: event.target.value,
                 }))
               }
               required

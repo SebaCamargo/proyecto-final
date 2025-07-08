@@ -31,7 +31,9 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, user } = useSelector((state) => state.auth);
-  const cartItems = useSelector((state) => state.cart[user?.id] || []);
+  const userId = user ? user.id : "guest";
+  const cartState = useSelector((state) => state.cart);
+  const cartItems = cartState[userId] || [];
   const menuToggleRef = useRef();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -98,7 +100,10 @@ function App() {
             <ul>
               <div className="logo">
                 <li>
-                  <Link to="/"> <span>UruFlix</span> </Link>
+                  <Link to="/">
+                    {" "}
+                    <span>UruFlix</span>{" "}
+                  </Link>
                 </li>
               </div>
 
@@ -120,17 +125,26 @@ function App() {
 
               <div className="nav-links">
                 <li>
-                  <Link to="/" onClick={handleLinkClick}> Home </Link>
+                  <Link to="/" onClick={handleLinkClick}>
+                    {" "}
+                    Home{" "}
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/about" onClick={handleLinkClick}> About </Link>
+                  <Link to="/about" onClick={handleLinkClick}>
+                    {" "}
+                    About{" "}
+                  </Link>
                 </li>
 
                 <li className="user-menu-inline">
                   {isMobile ? (
                     token ? (
                       <>
-                        <a href="/profile" onClick={handleLinkClick}> Perfil </a>
+                        <a href="/profile" onClick={handleLinkClick}>
+                          {" "}
+                          Perfil{" "}
+                        </a>
                         <button
                           onClick={() => {
                             handleLogout();
@@ -141,7 +155,10 @@ function App() {
                         </button>
                       </>
                     ) : (
-                      <a href="/login" onClick={handleLinkClick}> Login </a>
+                      <a href="/login" onClick={handleLinkClick}>
+                        {" "}
+                        Login{" "}
+                      </a>
                     )
                   ) : (
                     <UserMenu />
@@ -152,22 +169,21 @@ function App() {
                     className="cart-icon-wrapper"
                     onClick={() => {
                       handleLinkClick();
-                      if (token) {
-                        navigate("/cart");
-                      } else {
-                        navigate("/login");
-                      }
+                      navigate("/cart");
                     }}
                   >
                     <img src={cart} alt="cart" className="carrito" />
-                    {token && totalQuantity > 0 && (
+                    {totalQuantity > 0 && (
                       <div className="cart-badge">{totalQuantity}</div>
                     )}
                   </div>
                 </li>
 
                 <li>
-                  <Link to="/register" onClick={handleLinkClick}> Register </Link>
+                  <Link to="/register" onClick={handleLinkClick}>
+                    {" "}
+                    Register{" "}
+                  </Link>
                 </li>
               </div>
             </ul>
@@ -201,7 +217,10 @@ function App() {
         <div className="container-footer">
           <h1>UruFlix</h1>
           <div className="container-personal-information">
-            <h2> Creado por : <span>Sebastian Camargo</span></h2>
+            <h2>
+              {" "}
+              Creado por : <span>Sebastian Camargo</span>
+            </h2>
             <a href="https://github.com/SebaCamargo" target="_blank">
               <img src={github} alt="icon github" />
             </a>

@@ -36,16 +36,13 @@ function Movies({ films }) {
   const moviesToDisplay = searchInput ? searchResults : films;
 
   const handleAddToCart = (film) => {
-    if (!user) {
-      toast.error("Debes iniciar sesión para agregar al carrito");
-      return;
-    }
+    const userId = user ? user.id : "guest";
 
     toast.success(`"${film.title}" agregada al carrito!`);
 
     dispatch(
       addToCart({
-        userId: user.id,
+        userId: userId,
         movie: {
           id: film.id,
           title: film.title,
@@ -73,17 +70,17 @@ function Movies({ films }) {
           />
         </div>
 
-              <div className={`movies ${isHovering ? 'has-hover' : ''}`}>
-        {moviesToDisplay.length === 0 ? (
-          <h2>No se encontraron películas con este nombre.</h2>
-        ) : (
-          moviesToDisplay.map((film) => (
-            <Link to={`/moviedetail/${film.id}`} key={film.id}>
-              <div 
-                className="movie"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
+        <div className={`movies ${isHovering ? "has-hover" : ""}`}>
+          {moviesToDisplay.length === 0 ? (
+            <h2>No se encontraron películas con este nombre.</h2>
+          ) : (
+            moviesToDisplay.map((film) => (
+              <Link to={`/moviedetail/${film.id}`} key={film.id}>
+                <div
+                  className="movie"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
                   {film.poster_path ? (
                     <>
                       <img
