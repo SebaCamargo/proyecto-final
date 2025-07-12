@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../state/cartSlice";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { CardContainer, CardBody, CardItem } from "../components/ui/3d-card";
 import "../styles/Movie.css";
 import search from "../img/search.png";
 import miImagen from "../img/mateasado.png";
@@ -75,41 +76,47 @@ function Movies({ films }) {
             <h2>No se encontraron películas con este nombre.</h2>
           ) : (
             moviesToDisplay.map((film) => (
-              <Link to={`/moviedetail/${film.id}`} key={film.id}>
-                <div
-                  className="movie"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  {film.poster_path ? (
-                    <>
-                      <img
-                        src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
-                        alt={film.title}
-                      />
-                      <div
-                        className="container-cartbuy"
-                        onClick={(event) => {
-                          event.preventDefault();
-                          event.stopPropagation();
-                          handleAddToCart(film);
-                        }}
-                      >
-                        <img
-                          className="cartbuy"
-                          src={cartbuy}
-                          alt="supermarcket car"
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <div className="no-image">
-                      <span>No se encontro imagen</span>
-                      <span className="no-image-title">{film.title}</span>
-                    </div>
-                  )}
-                </div>
-              </Link>
+              <CardContainer key={film.id} className="movie-container">
+                <CardBody className="movie-card">
+                  <Link to={`/moviedetail/${film.id}`}>
+                    <CardItem 
+                      translateZ="80" 
+                      className="movie"
+                      onMouseEnter={() => setIsHovering(true)}
+                      onMouseLeave={() => setIsHovering(false)}
+                    >
+                      {film.poster_path ? (
+                        <>
+                          <img
+                            src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+                            alt={film.title}
+                            className="movie-poster"
+                          />
+                          <div
+                            className="container-cartbuy"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                              handleAddToCart(film);
+                            }}
+                          >
+                            <img
+                              className="cartbuy"
+                              src={cartbuy}
+                              alt="supermarcket car"
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="no-image">
+                          <span>No se encontro imagen</span>
+                          <span className="no-image-title">{film.title}</span>
+                        </div>
+                      )}
+                    </CardItem>
+                  </Link>
+                </CardBody>
+              </CardContainer>
             ))
           )}
         </div>

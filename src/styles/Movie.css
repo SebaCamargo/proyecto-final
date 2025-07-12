@@ -67,11 +67,25 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+  align-items: flex-start;
 }
 
 .movies h2 {
   font-size: 30px;
   font-weight: 800;
+}
+
+.movie-container {
+  perspective: 1000px;
+}
+
+.movie-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
 }
 
 .movies .movie {
@@ -83,42 +97,44 @@
   cursor: pointer;
 }
 
-.movies .movie img {
+.movies .movie img,
+.movies .movie .movie-poster {
   width: auto;
   height: 450px;
   max-width: 300px;
   border-radius: 15px;
   transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Efecto hover en la película seleccionada */
 .movies .movie:hover {
-  transform: scale(1.05);
   z-index: 10;
 }
 
-.movies .movie:hover img {
-  box-shadow: 0 10px 25px rgba(0, 167, 250, 0.3);
+.movies .movie:hover img,
+.movies .movie:hover .movie-poster {
+  box-shadow: 0 15px 35px rgba(0, 167, 250, 0.4);
 }
 
 /* Efecto no-hover para las demás películas cuando una está en hover */
 .movies .movie:not(:hover) {
   filter: none;
   opacity: 1;
-  transform: scale(1);
 }
 
 /* Clase para aplicar cuando hay hover en alguna película */
 .movies.has-hover .movie:not(:hover) {
   filter: blur(3px);
-  opacity: 0.7;
-  transform: scale(0.9);
+  opacity: 0.6;
+  transform: scale(0.90);
 }
 
-/* Mantener el efecto original pero mejorado */
-.movies .movie img:hover {
+/* Efectos 3D mejorados */
+.movie-container:hover .movie img,
+.movie-container:hover .movie .movie-poster {
+  box-shadow: 0 20px 40px rgba(0, 167, 250, 0.3);
   transform: scale(1.1);
-  transition: transform 0.3s ease;
 }
 
 .no-image {
